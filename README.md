@@ -14,10 +14,29 @@ export const environment = {
 };
 ```
 
-## **📌 總結**
-✅ **新增 `environment.ts` 設定 API URL**，確保前端連接後端 `TeaAPI`。  
-✅ **提供 `production` 環境的 `environment.prod.ts` 設定**，確保正式環境使用正確的 API。  
-✅ **提醒開發者在 HTTP 請求中使用 `environment.apiUrl`**，避免硬編碼 API 路徑。
+## 2️⃣ 啟動開發伺服器 (`ng serve`)
 
-這樣，開發者可以正確設定 API URL，確保 Angular 前端順利與 `TeaAPI` 連接！🚀✨  
-如果還有需要調整的地方，請讓我知道！😊
+執行以下指令來啟動開發伺服器，並在 `http://localhost:4200/` 開啟專案：
+```sh
+ng serve
+```
+
+🚀 **開發伺服器啟動後，任何對應的檔案修改都會自動重新載入！**
+
+## 3️⃣ 登入測試帳號
+
+當應用程式啟動後，預設會跳轉到 **Dashboard**，請使用以下測試帳號登入系統。
+![專案 Logo](assets/images/login.png)
+📌 **測試帳號**
+```
+帳號: a29803904
+密碼: test
+```
+
+
+🚀 **這樣，當用戶開啟應用程式時，系統會自動導向登入畫面，確保登入驗證生效！**
+
+## **📌 總結**
+✅ **新增 `environment.ts` 設定 API URL**，確保前端連接後端 `TeaAPI`。
+✅ **提供 `production` 環境的 `environment.prod.ts` 設定**，確保正式環境使用正確的 API。
+✅ **提醒開發者在 HTTP 請求中使用 `environment
