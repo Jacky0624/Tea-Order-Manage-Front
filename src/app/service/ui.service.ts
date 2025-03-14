@@ -9,6 +9,7 @@ export class UiService {
   constructor(
     private snackBar: MatSnackBar
   ) { }
+
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 1300,

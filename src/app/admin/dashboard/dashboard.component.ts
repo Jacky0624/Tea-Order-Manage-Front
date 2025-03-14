@@ -11,10 +11,5 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  stats = [
-    { title: 'Total Users', value: 1200, color: 'primary' },
-    { title: 'Orders Today', value: 150, color: 'accent' },
-    { title: 'Revenue', value: '$12,500', color: 'warn' },
-    { title: 'Active Sessions', value: 342, color: 'primary' }
-  ];
+
 }

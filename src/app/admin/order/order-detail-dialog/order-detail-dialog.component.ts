@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { UiService } from '../../../service/ui.service';
 @Component({
   selector: 'app-order-detail-dialog',
   standalone: true,
@@ -47,7 +48,7 @@ export class OrderDetailDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<OrderDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private orderService: OrderService,
-    private snackBar: MatSnackBar
+    private uiService: UiService
   ) {
     this.dialogRef.disableClose = true;
   }
@@ -79,10 +80,7 @@ export class OrderDetailDialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300,
-      verticalPosition: 'top'
-    });
+    this.uiService.openSnackBar(message, action);
   }
 
   calculateItemTotal(item: any): number {

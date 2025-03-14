@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ProductService } from '../../../service/product.service';
 import { ProductCategoryService } from '../../../service/product-category.service';
+import { UiService } from '../../../service/ui.service';
 interface ProductCatogory {
   id: number;
   name: string;
@@ -69,15 +70,13 @@ export class ModifyProductDialogComponent {
     private productService: ProductService,
     private productCategoryService: ProductCategoryService,
     private variantService: VariantService,
-    private snackBar: MatSnackBar
+    private uiService: UiService
   ) {
     this.dialogRef.disableClose = true;
 
   }
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300
-    });
+    this.uiService.openSnackBar(message, action);
   }
 
   get productSizes(): FormArray {

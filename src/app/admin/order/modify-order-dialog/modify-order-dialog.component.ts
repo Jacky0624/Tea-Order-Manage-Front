@@ -19,6 +19,7 @@ import { MatNativeDateModule, provideNativeDateAdapter } from '@angular/material
 import { MatCardModule } from '@angular/material/card';
 import { ModifyAddedProductDialogComponent } from '../modify-added-product-dialog/modify-added-product-dialog.component';
 import { SelectProductDialogComponent } from '../select-product-dialog/select-product-dialog.component';
+import { UiService } from '../../../service/ui.service';
 @Component({
   selector: 'app-modify-order-dialog',
   standalone: true,
@@ -54,7 +55,7 @@ export class ModifyOrderDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ModifyOrderDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private orderService: OrderService,
-    private snackBar: MatSnackBar,
+    private uiService: UiService,
     private dialog: MatDialog,
   ) {
     this.dialogRef.disableClose = true;
@@ -200,10 +201,7 @@ export class ModifyOrderDialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300,
-      verticalPosition: 'top'
-    });
+    this.uiService.openSnackBar(message, action);
   }
   removeOrderItem(item: any): void {
     this.orderItems = this.orderItems.filter(i => i !== item);

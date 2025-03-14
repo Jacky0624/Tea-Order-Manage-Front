@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../../../service/user.service';
+import { UiService } from '../../../service/ui.service';
 interface Role {
   id: number;
   name: string;
@@ -37,15 +38,13 @@ export class ModifyUserDialogComponent {
     private permissionService: PermissionService,
     private roleService: RoleService,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private uiService: UiService
   ) {
     this.dialogRef.disableClose = true;
     this.refresh();
   }
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300
-    });
+    this.uiService.openSnackBar(message, action);
   }
   refresh() {
     this.userService.getUserById(this.data).subscribe({

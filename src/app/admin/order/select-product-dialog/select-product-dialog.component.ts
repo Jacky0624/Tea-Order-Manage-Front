@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AddProductDialogComponent } from '../add-product-dialog/add-product-dialog.component';
+import { UiService } from '../../../service/ui.service';
 interface Product {
   id: number;
   name: string;
@@ -41,7 +42,7 @@ export class SelectProductDialogComponent implements OnInit {
     private productService: ProductService,
     public dialogRef: MatDialogRef<SelectProductDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private snackBar: MatSnackBar,
+    private uiService: UiService,
     private dialog: MatDialog
   ) {
     this.dialogRef.disableClose = true;
@@ -82,9 +83,7 @@ export class SelectProductDialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 2000
-    });
+    this.uiService.openSnackBar(message, action);
   }
 
   selectProduct(product: Product) {

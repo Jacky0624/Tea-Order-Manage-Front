@@ -14,6 +14,7 @@ import { CreateOrderDialogComponent } from '../create-order-dialog/create-order-
 import { ModifyOrderDialogComponent } from '../modify-order-dialog/modify-order-dialog.component';
 import { OrderDetailDialogComponent } from '../order-detail-dialog/order-detail-dialog.component';
 import { CommonModule } from '@angular/common';
+import { UiService } from '../../../service/ui.service';
 @Component({
   selector: 'app-order-management',
   standalone: true,
@@ -34,15 +35,12 @@ export class OrderManagementComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300,
-      verticalPosition: 'top'
-    });
+    this.uiService.openSnackBar(message, action);
   }
 
   constructor(
     private dialog: MatDialog,
-    private snackBar: MatSnackBar,
+    private uiService: UiService,
     private orderService: OrderService,
     private authService: AuthService
   ) {
