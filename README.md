@@ -1,59 +1,23 @@
 # KingstonTeaFront
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+本專案是使用 Angular CLI(https://github.com/angular/angular-cli) 版本 19.2.1 生成的。
 
-## Development server
+## 1️⃣ 設定 API URL (`environment.ts`)
 
-To start a local development server, run:
+在 `src/environments/environment.ts` 內設定 **後端 API 連接 URL**，以確保前端正確連接 `TeaAPI`。
 
-```bash
-ng serve
+📌 **示例 (`environment.ts`)**：
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://localhost:5001/api' //據後端API設定URL
+};
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## **📌 總結**
+✅ **新增 `environment.ts` 設定 API URL**，確保前端連接後端 `TeaAPI`。  
+✅ **提供 `production` 環境的 `environment.prod.ts` 設定**，確保正式環境使用正確的 API。  
+✅ **提醒開發者在 HTTP 請求中使用 `environment.apiUrl`**，避免硬編碼 API 路徑。
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+這樣，開發者可以正確設定 API URL，確保 Angular 前端順利與 `TeaAPI` 連接！🚀✨  
+如果還有需要調整的地方，請讓我知道！😊
