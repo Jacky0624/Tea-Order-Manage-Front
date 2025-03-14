@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from '../../../components/confirm-dialog/confirm-dialog.component';
 import { CreateProductDialogComponent } from '../create-product-dialog/create-product-dialog.component';
 import { ModifyProductDialogComponent } from '../modify-product-dialog/modify-product-dialog.component';
+import { UiService } from '../../../service/ui.service';
 
 @Component({
   selector: 'app-product-management',
@@ -35,15 +36,13 @@ export class ProductManagementComponent implements AfterViewInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300
-    });
+    this.uiService.openSnackBar(message, action);
   }
 
   constructor(
     private productService: ProductService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private uiService: UiService
   ) {
     this.refresh();
   }

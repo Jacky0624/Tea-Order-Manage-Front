@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { UiService } from '../../../service/ui.service';
 
 @Component({
   selector: 'app-modify-added-product-dialog',
@@ -42,7 +43,7 @@ export class ModifyAddedProductDialogComponent {
     private productService: ProductService,
     public dialogRef: MatDialogRef<ModifyAddedProductDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private snackBar: MatSnackBar
+    private uiService: UiService
   ) {
 
   }
@@ -79,7 +80,7 @@ export class ModifyAddedProductDialogComponent {
     this.productService.GetProductById(req).subscribe({
       next: data => {
         if (data === null) {
-          this.openSnackBar('商品下架後，無法再修改明細','確認');
+          this.openSnackBar('商品下架後，無法再修改明細', '確認');
           this.dialogRef.close();
         }
         this.product = data;
@@ -143,9 +144,6 @@ export class ModifyAddedProductDialogComponent {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300,
-      verticalPosition: 'top'
-    });
+    this.uiService.openSnackBar(message, action);
   }
 }

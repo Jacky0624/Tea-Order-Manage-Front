@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateUserDialogComponent } from '../create-user-dialog/create-user-dialog.component';
 import { ModifyUserDialogComponent } from '../modify-user-dialog/modify-user-dialog.component';
 import { ConfirmDialogComponent } from '../../../components/confirm-dialog/confirm-dialog.component';
+import { UiService } from '../../../service/ui.service';
 
 @Component({
   selector: 'app-account-management',
@@ -30,10 +31,16 @@ export class AccountManagementComponent implements AfterViewInit {
 
   constructor(
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private uiService: UiService
   ) {
     this.refresh();
   }
+
+  openSnackBar(message: string, action: string) {
+    this.uiService.openSnackBar(message, action);
+  }
+
   refresh() {
     this.userService.getAllUsers().subscribe({
       next: data => {
@@ -88,6 +95,12 @@ export class AccountManagementComponent implements AfterViewInit {
         }
         this.userService.deleteUser(req).subscribe({
           next: data => {
+            if (data.resultCode === 0) {
+              this.openSnackBar('刪除成功', '確定')
+            }
+            else if (data.resultCode === -1) {
+              this.openSnackBar('無法刪除自己', '確定')
+            }
             console.log(data);
           },
           error: error => {

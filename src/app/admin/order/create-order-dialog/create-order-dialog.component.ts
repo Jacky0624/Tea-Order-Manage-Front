@@ -1,3 +1,4 @@
+import { UiService } from './../../../service/ui.service';
 import { OrderService } from './../../../service/order.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -54,7 +55,7 @@ export class CreateOrderDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateOrderDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private orderService: OrderService,
-    private snackBar: MatSnackBar,
+    private uiService: UiService,
     private dialog: MatDialog,
   ) {
     this.dialogRef.disableClose = true;
@@ -126,10 +127,7 @@ export class CreateOrderDialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300,
-      verticalPosition: 'top'
-    });
+    this.uiService.openSnackBar(message, action);
   }
   removeOrderItem(item: any): void {
     this.orderItems = this.orderItems.filter(i => i !== item);
