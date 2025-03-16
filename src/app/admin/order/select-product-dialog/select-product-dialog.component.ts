@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProductService } from '../../../service/product.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { KeyValuePipe } from '@angular/common';

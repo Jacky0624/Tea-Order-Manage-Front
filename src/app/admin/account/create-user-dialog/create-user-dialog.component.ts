@@ -11,7 +11,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../../../service/user.service';
 import { UiService } from '../../../service/ui.service';
 interface Role {

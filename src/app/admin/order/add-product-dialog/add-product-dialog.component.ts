@@ -1,8 +1,8 @@
+import { UiService } from './../../../service/ui.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../service/product.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,7 +44,7 @@ export class AddProductDialogComponent implements OnInit {
     private productService: ProductService,
     public dialogRef: MatDialogRef<AddProductDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private snackBar: MatSnackBar
+    private uiService: UiService
   ) {
 
   }
@@ -126,9 +126,6 @@ export class AddProductDialogComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 1300,
-      verticalPosition: 'top'
-    });
+    this.uiService.openSnackBar(message, action);
   }
 }

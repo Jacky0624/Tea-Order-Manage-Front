@@ -17,9 +17,7 @@ const appConfig ={
     importProvidersFrom(
       JwtModule.forRoot({
         config: {
-          tokenGetter: tokenGetter,
-          allowedDomains: ["localhost:3000"],
-          disallowedRoutes: ["localhost:3000/api/auth/login"]
+          tokenGetter: tokenGetter
         }
       })
     ),
