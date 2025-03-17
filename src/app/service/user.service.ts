@@ -39,4 +39,11 @@ export class UserService {
     }
     return this.http.post(`${this.apiUrl}/DeleteUser`, JSON.stringify(request), httpOptions);
   }
+
+  modifyPassword(request: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+    return this.http.post(`${this.apiUrl}/ModifyPassword`, JSON.stringify(request), httpOptions);
+  }
 }

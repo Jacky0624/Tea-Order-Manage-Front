@@ -10,6 +10,7 @@ import { CreateUserDialogComponent } from '../create-user-dialog/create-user-dia
 import { ModifyUserDialogComponent } from '../modify-user-dialog/modify-user-dialog.component';
 import { ConfirmDialogComponent } from '../../../components/confirm-dialog/confirm-dialog.component';
 import { UiService } from '../../../service/ui.service';
+import { ModifyPasswordDialogComponent } from '../modify-password-dialog/modify-password-dialog.component';
 
 @Component({
   selector: 'app-account-management',
@@ -20,7 +21,7 @@ import { UiService } from '../../../service/ui.service';
 })
 
 export class AccountManagementComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'account', 'userName', 'role', 'modify', 'delete'];
+  displayedColumns: string[] = ['position', 'account', 'userName', 'role', 'modify', 'modifyPassword', 'delete'];
   dataSource: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -70,6 +71,20 @@ export class AccountManagementComponent implements AfterViewInit {
   }
   openModifyUserDialog(user: any) {
     const dialogRef = this.dialog.open(ModifyUserDialogComponent, {
+      width: '400px',
+      data: user.id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.refresh();
+      }
+
+    });
+  }
+
+  openModifyPasswordDialog(user: any) {
+    const dialogRef = this.dialog.open(ModifyPasswordDialogComponent, {
       width: '400px',
       data: user.id
     });
